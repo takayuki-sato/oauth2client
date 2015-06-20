@@ -800,7 +800,7 @@ class OAuth2Credentials(Credentials):
     if six.PY3 and isinstance(content, bytes):
       content = content.decode('utf-8')
     if resp.status == 200:
-      d = json.loads(content)
+      d = json.loads(content.decode('utf-8'))
       self.token_response = d
       self.access_token = d['access_token']
       self.refresh_token = d.get('refresh_token', self.refresh_token)
